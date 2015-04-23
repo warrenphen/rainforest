@@ -8,6 +8,19 @@
 </head>
 <body>
 
+<div class="container">
+  <div class="ui inverted main menu">
+    <a class="active item" href="/">
+       Rainforest
+    </a>
+    <a class="item" href="/products">
+      <i class="shop icon"></i> Products
+    </a>
+    <a class="item">
+      <i class="user icon"></i> Profile
+    </a>
+  </div>
+</div>
 <% if flash[:notice] %>
       <p id="notice"><%= flash[:notice] %></p>
     <% end %>
@@ -15,15 +28,53 @@
       <p id="alert"><%= flash[:alert] %></p>
     <% end %>
 
+<div>
+
+<br /><br />
+
+<div class="ui two column centered grid">
+<div class="column">
+
     <%= yield %>
 
     <p class="userinfo">
       <% if current_user %>
+
         Signed in as <%= current_user.name %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+
       <% else %>
-        <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %> <%= link_to "Create Product", new_product_path %>
+      
+        <div class ="ui buttons">
+
+          <%= link_to new_session_path do %>
+            <div class="ui button">
+              Log in
+            </div>
+          <% end %>
+
+          <div class="or"></div> 
+
+          <%= link_to new_user_path do %> 
+            <div class="ui positive button">
+              Sign up
+          </div>
+        </div>
+        <% end %>
+
+        <%= link_to new_product_path do %>
+        <div class="ui basic button">
+          <i class="icon user"></i>
+            Create Product
+        </div>
+        <% end %>
+      
       <% end %>
     </p>
 
-</body>
+  </div>
+
+</div>
+</div>
+
+ </body>
 </html>
