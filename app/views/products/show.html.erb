@@ -2,21 +2,23 @@
 
   <p>Reviews for <%= @product.name %></p>
 
+  <div id="review-list">
   <% @product.reviews.each do |review| %>
-    <p>
+    <div class="review">
+      <div class="poster">
+        Posted by <%= review.user.name %> on <%= review.created_at %>
+      </div>
+      <p class="comment">
       <%= review.comment %>
-      <br>
-      <% if review.user != nil %>
-        <em> by <%= review.user.name %></em>
-        Added on: <%= review.created_at %>
-      <% end %>
-    </p>
+      </p>
+    </div>
   <% end %>
+</div>
 
   <% if current_user %>
   <h4>New Review</h4>
 
-  <%= form_for([@product, @review]) do |f| %>
+  <%= form_for [@product, @review], :remote => true do |f| %>
     <% if @review.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
