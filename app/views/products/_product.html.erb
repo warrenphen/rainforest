@@ -1,19 +1,6 @@
-<br />
-<table class="ui table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
       <tr>
           <td><a href="/products/<%= product.id %>"><%= product.name %></a></td>
           <td><%= product.description %></td>
           <td><%= product.formatted_price %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+  

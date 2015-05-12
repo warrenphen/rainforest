@@ -11,8 +11,19 @@
 
 <% end %>
 
- <div id="products">
- <%= render 'product' %>
- </div> 
+ <table class="ui table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody id="products">
+
+ <%= render @products %>
+
+</tbody>
+ </table> 
  
  <%= paginate @products %>

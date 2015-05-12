@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   	@product = Product.find(params[:id])
 
     if current_user
-      @review = @product.reviews.build
+      @review = Review.new({user_id: current_user.id})
     end
   end
 
